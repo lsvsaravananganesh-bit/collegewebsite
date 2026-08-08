@@ -1,121 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Faculty Directory</title>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering College Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="contact-info">
+        <span>📞 +91 8518 270957</span>
+        <span>✉️ principal@college.ac.in</span>
+      </div>
+      <div class="quick-links-top">
+        <a href="#">Alumni</a>
+        <a href="#">Student Portal</a>
+        <a href="#">Faculty Portal</a>
+        <a href="#">Grievance</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <!-- College Logo Placeholder -->
+      <div class="logo-circle">
+        <span>LOGO</span>
+      </div>
+      <div class="college-titles">
+        <h1>G. PULLA REDDY ENGINEERING COLLEGE (Autonomous)</h1>
+        <p>Approved by AICTE, New Delhi | Affiliated to JNTUA, Ananthapuramu</p>
+        <p class="accreditations">Accredited by NAAC with 'A+' Grade | NBA Accredited</p>
+      </div>
+      <!-- Right Side Badges -->
+      <div class="badges">
+        <div class="badge-box">NAAC<br>A+</div>
+        <div class="badge-box">NBA</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <ul class="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">About Us ▾</a></li>
+        <li><a href="#">Administration ▾</a></li>
+        <li><a href="#">Academics ▾</a></li>
+        <li><a href="#">Departments ▾</a></li>
+        <li><a href="#">Admissions</a></li>
+        <li><a href="#">Placements</a></li>
+        <li><a href="#">R & D</a></li>
+        <li><a href="#">Examinations</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Scrolling News Ticker -->
+  <div class="news-ticker">
+    <div class="container ticker-wrap">
+      <div class="ticker-label">Latest Updates</div>
+      <marquee class="ticker-text" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+        <a href="#">🔥 B.Tech VI Semester Regular Exam Results Declared.</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">📢 Admission Notification for Category 'B' seats (2026-27).</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">📅 Academic Calendar for B.Tech I Year (2026-27) released.</a>
+      </marquee>
+    </div>
+  </div>
+
+  <!-- Hero Image Slider -->
+  <section class="hero-slider">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=1600');">
+      <div class="slide-overlay">
+        <h2>Empowering the Next Generation of Engineers</h2>
+        <p>Excellence in Technical Education since 1985</p>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1600');">
+      <div class="slide-overlay">
+        <h2>State-of-the-Art Infrastructure</h2>
+        <p>Advanced labs, digital libraries, and innovation hubs</p>
+      </div>
+    </div>
+    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+  </section>
+
+  <!-- Highlight Cards Grid -->
+  <section class="highlights-section container">
+    <div class="grid-cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Placements</h3>
+        <p>Record-breaking placements with top MNCs. Highest package offered this year: 15 LPA.</p>
+        <a href="#" class="read-more">View Stats →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>Admissions 2026</h3>
+        <p>Explore our B.Tech and M.Tech programs. Apply now for the upcoming academic session.</p>
+        <a href="#" class="read-more">Apply Now →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>Research & Dev</h3>
+        <p>Fostering innovation with funded projects, patents, and incubation centers.</p>
+        <a href="#" class="read-more">Explore R&D →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>Examinations</h3>
+        <p>Access exam schedules, syllabus, circulars, and download hall tickets online.</p>
+        <a href="#" class="read-more">Exam Portal →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area (About & Notice Board) -->
+  <section class="main-content container">
+    <div class="content-grid">
+      <!-- About Section -->
+      <div class="about-box">
+        <h2>Welcome to Our Institution</h2>
+        <p>Established with the objective of imparting quality technical education, the college is a pioneer in shaping the careers of young minds. Recognized by AICTE and permanently affiliated to JNTUA, we offer NBA-accredited undergraduate programs in various engineering disciplines.</p>
+        <p>Our autonomous status allows us to design industry-oriented curriculum, ensuring our students are ready for the global workforce.</p>
+        <a href="#" class="btn-primary">Read More About Us</a>
+      </div>
+      
+      <!-- Notice Board -->
+      <div class="notice-board">
+        <h2>📌 Notice Board</h2>
+        <ul class="notice-list">
+          <li>
+            <span class="date">Aug 08</span>
+            <a href="#">Notification regarding payment of Tuition Fee for Academic Year 2026-27</a>
+          </li>
+          <li>
+            <span class="date">Aug 05</span>
+            <a href="#">JNTUA Circular: Anti-Ragging Affidavit submission mandatory for all students</a>
+          </li>
+          <li>
+            <span class="date">Aug 01</span>
+            <a href="#">List of candidates provisionally selected for Ph.D. program (Phase 1)</a>
+          </li>
+          <li>
+            <span class="date">Jul 28</span>
+            <a href="#">Recruitment Notification: Walk-in Interview for Assistant Professors</a>
+          </li>
+        </ul>
+        <a href="#" class="view-all">View All Circulars</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
       <div>
-        <h1>Faculty Directory</h1>
-        <p class="subtitle">Meet our distinguished professors, researchers, and academic leaders.</p>
+        <h3>Contact Us</h3>
+        <p>Engineering College Campus</p>
+        <p>Nandyal Road, Kurnool</p>
+        <p>Andhra Pradesh - 518007, India</p>
+        <p>Phone: +91 8518 270957</p>
       </div>
-      <div class="badge" id="facultyCountBadge">
-        🏛️ <span id="facultyCount">0</span> Faculty Members Found
+      <div>
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#">NIRF Data</a></li>
+          <li><a href="#">Mandatory Disclosure</a></li>
+          <li><a href="#">IQAC Cell</a></li>
+          <li><a href="#">Anti-Ragging Committee</a></li>
+        </ul>
       </div>
-    </header>
-
-    <!-- Controls Bar -->
-    <div class="controls-bar">
-      <!-- Search Input -->
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Search by name or research topic..." 
-        />
-      </div>
-
-      <!-- Filter and View Controls -->
-      <div class="filter-controls">
-        <select id="departmentSelect">
-          <option value="All Departments">All Departments</option>
-          <option value="Computer Science & Engineering">Computer Science & Engineering</option>
-          <option value="AI & Data Science">AI & Data Science</option>
-          <option value="Electronics & Comm">Electronics & Comm</option>
-          <option value="Mechanical Engineering">Mechanical Engineering</option>
-          <option value="Civil Engineering">Civil Engineering</option>
-        </select>
-
-        <div class="view-toggle">
-          <button id="gridViewBtn" class="active" title="Grid View">田</button>
-          <button id="listViewBtn" title="List View">☰</button>
+      <div>
+        <h3>Location</h3>
+        <!-- Placeholder for Map -->
+        <div class="map-placeholder">
+          📍 Google Maps Location
         </div>
       </div>
     </div>
-
-    <!-- Faculty Container -->
-    <div id="facultyContainer" class="grid-view"></div>
-
-    <!-- Empty State -->
-    <div id="emptyState" class="empty-state hidden">
-      <div class="empty-icon">🎓</div>
-      <h3>No Faculty Members Found</h3>
-      <p>Try adjusting your search terms or department filter.</p>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Engineering College. All Rights Reserved. Designed for Excellence.</p>
     </div>
-  </div>
+  </footer>
 
-  <!-- Detail Modal -->
-  <div id="facultyModal" class="modal-overlay hidden">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-header-info">
-          <img id="modalImage" src="" alt="Faculty Photo" />
-          <div>
-            <h2 id="modalName"></h2>
-            <p id="modalDesignation" class="modal-designation"></p>
-            <p id="modalDepartment" class="modal-department"></p>
-          </div>
-        </div>
-        <button id="closeModalBtn" class="close-btn">&times;</button>
-      </div>
-
-      <div class="modal-body">
-        <!-- Quick Contact -->
-        <div class="contact-grid">
-          <div>✉️ <span id="modalEmail"></span></div>
-          <div>📞 <span id="modalPhone"></span></div>
-          <div>📍 <span id="modalOffice"></span></div>
-        </div>
-
-        <!-- Academic Background -->
-        <div class="modal-section">
-          <h3>🎓 Academic Qualifications & Experience</h3>
-          <p id="modalQualification" class="font-bold"></p>
-          <p id="modalExperience" class="text-muted"></p>
-        </div>
-
-        <!-- Research Focus -->
-        <div class="modal-section">
-          <h3>🏆 Research Focus & Interests</h3>
-          <div id="modalResearchTags" class="tag-group"></div>
-        </div>
-
-        <!-- Key Publications -->
-        <div class="modal-section">
-          <h3>📚 Key Publications</h3>
-          <div id="modalPublications" class="publications-list"></div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button id="modalCloseFooterBtn" class="btn-secondary">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Custom JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
