@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty Directory</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div>
+        <h1>Faculty Directory</h1>
+        <p class="subtitle">Meet our distinguished professors, researchers, and academic leaders.</p>
+      </div>
+      <div class="badge" id="facultyCountBadge">
+        🏛️ <span id="facultyCount">0</span> Faculty Members Found
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <!-- Search Input -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search by name or research topic..." 
+        />
+      </div>
+
+      <!-- Filter and View Controls -->
+      <div class="filter-controls">
+        <select id="departmentSelect">
+          <option value="All Departments">All Departments</option>
+          <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+          <option value="AI & Data Science">AI & Data Science</option>
+          <option value="Electronics & Comm">Electronics & Comm</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+        </select>
+
+        <div class="view-toggle">
+          <button id="gridViewBtn" class="active" title="Grid View">田</button>
+          <button id="listViewBtn" title="List View">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faculty Container -->
+    <div id="facultyContainer" class="grid-view"></div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="empty-state hidden">
+      <div class="empty-icon">🎓</div>
+      <h3>No Faculty Members Found</h3>
+      <p>Try adjusting your search terms or department filter.</p>
+    </div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div id="facultyModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <img id="modalImage" src="" alt="Faculty Photo" />
+          <div>
+            <h2 id="modalName"></h2>
+            <p id="modalDesignation" class="modal-designation"></p>
+            <p id="modalDepartment" class="modal-department"></p>
+          </div>
+        </div>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Quick Contact -->
+        <div class="contact-grid">
+          <div>✉️ <span id="modalEmail"></span></div>
+          <div>📞 <span id="modalPhone"></span></div>
+          <div>📍 <span id="modalOffice"></span></div>
+        </div>
+
+        <!-- Academic Background -->
+        <div class="modal-section">
+          <h3>🎓 Academic Qualifications & Experience</h3>
+          <p id="modalQualification" class="font-bold"></p>
+          <p id="modalExperience" class="text-muted"></p>
+        </div>
+
+        <!-- Research Focus -->
+        <div class="modal-section">
+          <h3>🏆 Research Focus & Interests</h3>
+          <div id="modalResearchTags" class="tag-group"></div>
+        </div>
+
+        <!-- Key Publications -->
+        <div class="modal-section">
+          <h3>📚 Key Publications</h3>
+          <div id="modalPublications" class="publications-list"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modalCloseFooterBtn" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
