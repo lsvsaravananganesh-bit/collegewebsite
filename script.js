@@ -1,32 +1,49 @@
-// Hero Image Slider Logic
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
 
-// Function to handle manual slide change
-function changeSlide(direction) {
-  // Remove active class from current slide
-  slides[currentSlide].classList.remove('active');
-  
-  // Calculate next slide index
-  currentSlide = (currentSlide + direction + slides.length) % slides.length;
-  
-  // Add active class to new slide
-  slides[currentSlide].classList.add('active');
+function renderSlide(index) {
+  if (!slides.length) return;
+  currentSlide = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
 }
 
-// Auto-advance slides every 5 seconds
-let slideInterval = setInterval(() => {
-  changeSlide(1);
-}, 5000);
+function changeSlide(direction) {
+  renderSlide(currentSlide + direction);
+  restartSlider();
+}
 
-// Pause auto-sliding when a user clicks the controls
-const buttons = document.querySelectorAll('.slider-btn');
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    clearInterval(slideInterval); // Stop automatic sliding
-    // Restart automatic sliding after 8 seconds of inactivity
-    slideInterval = setInterval(() => {
-      changeSlide(1);
-    }, 8000);
+function goToSlide(index) {
+  renderSlide(index);
+  restartSlider();
+}
+
+let slideInterval = setInterval(() => renderSlide(currentSlide + 1), 6000);
+function restartSlider() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(() => renderSlide(currentSlide + 1), 6000);
+}
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+}
+
+document.querySelectorAll('.has-dropdown > a').forEach(link => {
+  link.addEventListener('click', event => {
+    if (window.innerWidth <= 650) {
+      event.preventDefault();
+      link.parentElement.classList.toggle('open');
+    }
+  });
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 650 && !link.parentElement.classList.contains('has-dropdown')) {
+      navLinks.classList.remove('open');
+    }
   });
 });
