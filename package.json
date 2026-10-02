@@ -1,0 +1,21 @@
+{
+  "name": "collegewebsite",
+  "version": "1.0.0",
+  "description": "Ganesh Institute of Technology - Official Portal, Student Dashboard & Admin Console",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "serve": "node server.js",
+    "dev:no-open": "node server.js --no-open"
+  },
+  "keywords": [
+    "college-website",
+    "student-portal",
+    "admin-portal",
+    "responsive",
+    "html5"
+  ],
+  "author": "Ganesh Institute of Technology",
+  "license": "MIT"
+}
