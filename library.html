@@ -1,1 +1,259 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Library | Ganesh Institute of Technology</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="department-page.css"></head><body class="dept-page"><section class="dept-hero"><div class="container"><div class="section-label">STUDENT SERVICE</div><h1>Digital Library</h1><p>Library resources, catalogue access and digital learning services.</p></div></section><main class="dept-content"><div class="container"><div class="dept-sections"><div class="dept-card"><h3>Library Catalogue</h3><p>Search books, journals and learning resources when the official catalogue is connected.</p></div><div class="dept-card"><h3>Digital Resources</h3><p>Links to approved e-books, journals, databases and online learning resources can be added here.</p></div></div><a class="back-home" href="student-portal.html">← Back to Student Portal</a></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central Digital Library | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+  <style>
+    .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 24px; }
+    .resource-card { background: #fff; border: 1px solid var(--line); padding: 22px; border-radius: var(--radius-md); transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--teal); background: #fbfdfe; }
+    .resource-card .cat-badge { align-self: flex-start; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; background: var(--surface-3); color: var(--navy); text-transform: uppercase; margin-bottom: 10px; }
+    .resource-card h3 { font-size: 16px; color: var(--navy); margin-bottom: 6px; line-height: 1.35; }
+    .resource-card p { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .resource-card .meta { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">CENTRAL LEARNING RESOURCE CENTRE</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Digital E-Books, Peer-Reviewed Journals, Course Notes & PYQs</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html" class="active">Digital Library</a></li>
+        <li><a href="campus-map.html">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero">
+    <div class="container">
+      <div class="section-label">LEARNING INFRASTRUCTURE</div>
+      <h1>Central Digital Library</h1>
+      <p>Over 45,000 physical volumes, 12,000+ e-journals, IEEE Xplore, ScienceDirect, NPTEL video repositories, and departmental question archives.</p>
+    </div>
+  </section>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <!-- Stats -->
+      <div class="dept-stats" style="margin-bottom:32px">
+        <div><strong>45,000+</strong><span>Printed Volumes</span></div>
+        <div><strong>12,500+</strong><span>E-Journals (IEEE/Elsevier)</span></div>
+        <div><strong>50+</strong><span>Digital Terminals</span></div>
+        <div><strong>24/7</strong><span>Online Portal Access</span></div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:var(--shadow-sm);margin-bottom:28px">
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <input type="text" id="libSearchInput" placeholder="Search by book title, author, course code (e.g. Karumanchi, VLSI, Algorithms)..." style="flex:1;min-width:260px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;font-size:14px;outline:none">
+          <select id="libDeptSelect" style="padding:12px 16px;border:1px solid var(--line);border-radius:8px;font-size:14px;outline:none">
+            <option value="">All Departments</option>
+            <option value="CSE">CSE / IT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Civil">Civil</option>
+            <option value="AI">AI & Data Science</option>
+          </select>
+        </div>
+
+        <div class="filter-tabs" style="margin:16px 0 0">
+          <button class="filter-tab active" data-cat="all">All Resources</button>
+          <button class="filter-tab" data-cat="E-Book">E-Books</button>
+          <button class="filter-tab" data-cat="Lab Manual">Lab Manuals</button>
+          <button class="filter-tab" data-cat="Question Papers">Question Papers (PYQ)</button>
+        </div>
+      </div>
+
+      <!-- Resource Grid -->
+      <div class="resource-grid" id="libGrid">
+        <!-- Dynamically populated -->
+      </div>
+
+      <!-- Library Timings & Consortia -->
+      <div class="dept-intro" style="margin-top:48px">
+        <div class="dept-card">
+          <div class="section-label">SERVICES & HOURS</div>
+          <h3>Library Working Hours</h3>
+          <ul style="padding-left:20px;color:var(--muted);font-size:14px;line-height:2">
+            <li><b>Working Days:</b> 08:00 AM to 08:00 PM</li>
+            <li><b>Examination Season:</b> Open until 10:00 PM</li>
+            <li><b>Sundays & Holidays:</b> 09:00 AM to 01:00 PM</li>
+            <li><b>Digital Library Lab:</b> Available 24/7 for authenticated campus intranet users.</li>
+          </ul>
+        </div>
+        <div class="dept-card">
+          <div class="section-label">INSTITUTIONAL MEMBERSHIPS</div>
+          <h3>Consortia & Digital Access</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.7">
+            GIT students and faculty receive sponsored remote access credentials to DELNET, IEEE All-Society Periodicals Package (ASPP), SpringerLink, and National Digital Library of India (NDLI).
+          </p>
+          <a class="btn primary" style="min-height:36px;padding:6px 16px;font-size:13px;margin-top:10px" href="student-portal.html">Access Through Student Portal →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>RESOURCES</h4>
+        <a href="library.html">Digital Library</a>
+        <a href="departments.html">Academic Programs</a>
+        <a href="examinations.html">Examinations Cell</a>
+        <a href="syllabus-ece.html">Course Syllabus</a>
+      </div>
+      <div>
+        <h4>INSTITUTE</h4>
+        <a href="profile.html">About Institute</a>
+        <a href="college-details.html">Campus Infrastructure</a>
+        <a href="campus-map.html">Campus Map</a>
+        <a href="news.html">News & Circulars</a>
+      </div>
+      <div>
+        <h4>PORTALS</h4>
+        <a href="student-portal.html">Student Dashboard</a>
+        <a href="admin-portal.html">Admin Dashboard</a>
+        <a href="placements.html">Placements Hub</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Central Learning Resource Centre</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('libGrid');
+      const searchInput = document.getElementById('libSearchInput');
+      const deptSelect = document.getElementById('libDeptSelect');
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      let activeCat = 'all';
+
+      function render() {
+        const query = searchInput.value.toLowerCase().trim();
+        const dept = deptSelect.value;
+
+        let list = LIBRARY_RESOURCES;
+
+        if (activeCat !== 'all') {
+          list = list.filter(item => item.category === activeCat);
+        }
+
+        if (dept) {
+          list = list.filter(item => item.department.includes(dept));
+        }
+
+        if (query) {
+          list = list.filter(item => 
+            item.title.toLowerCase().includes(query) ||
+            item.author.toLowerCase().includes(query) ||
+            item.department.toLowerCase().includes(query)
+          );
+        }
+
+        if (list.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">No resources found matching your search query. Try searching for "Data", "VLSI", "Machine", or change the filter.</div>';
+          return;
+        }
+
+        grid.innerHTML = list.map(item => `
+          <div class="resource-card">
+            <div>
+              <span class="cat-badge">${item.category}</span>
+              <h3>${item.title}</h3>
+              <p>Author: <b>${item.author}</b><br>Department: ${item.department} · Sem ${item.semester}</p>
+            </div>
+            <div>
+              <div class="meta">
+                <span>📖 ${item.reads} views</span>
+                <span class="badge info">${item.format}</span>
+              </div>
+              <button class="btn primary" style="width:100%;margin-top:12px;min-height:36px;padding:6px 12px;font-size:12.5px" onclick="alert('Opening official digital resource: ${item.title} (${item.format})')">
+                📥 View / Download E-Resource
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      searchInput.addEventListener('input', render);
+      deptSelect.addEventListener('change', render);
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeCat = tab.dataset.cat;
+          render();
+        });
+      });
+
+      render();
+    });
+  </script>
+</body>
+</html>

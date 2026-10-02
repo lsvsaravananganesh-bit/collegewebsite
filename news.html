@@ -1,1 +1,201 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>College News | Ganesh Institute of Technology</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="department-page.css"></head><body class="dept-page"><section class="dept-hero"><div class="container"><div class="section-label">CAMPUS UPDATES</div><h1>College News</h1><p>Latest announcements, achievements and important updates from the institute.</p></div></section><nav class="dept-nav"><div class="container"><a href="home.html">← Home</a><a href="#academic">Academic</a><a href="#achievement">Achievements</a><a href="#faculty">Faculty</a><a href="#placements">Placements</a><a href="#events">Events</a></div></nav><main class="dept-content"><div class="container"><div class="dept-sections"><a class="dept-card" id="academic" href="examinations.html"><div class="section-label">ACADEMIC</div><h3>Admissions & Academic Updates</h3><p>Important academic announcements, registration information and department updates.</p><span class="text-link">Read Updates →</span></a><a class="dept-card" id="achievement" href="top-performers.html"><div class="section-label">ACHIEVEMENT</div><h3>Student Achievements</h3><p>Highlights of student projects, competitions, awards and technical accomplishments.</p><span class="text-link">View Achievements →</span></a><a class="dept-card" id="faculty" href="college-details.html"><div class="section-label">FACULTY & RESEARCH</div><h3>Research News</h3><p>Research, workshops, publications, seminars and faculty achievements.</p><span class="text-link">Explore Research →</span></a><a class="dept-card" id="placements" href="placements.html"><div class="section-label">PLACEMENTS</div><h3>Recruitment Updates</h3><p>Placement drives, internships, training sessions and career opportunities.</p><span class="text-link">Placement Page →</span></a><a class="dept-card" href="student-life.html"><div class="section-label">CAMPUS</div><h3>Campus Announcements</h3><p>Important notices concerning clubs, activities, facilities and student services.</p><span class="text-link">Student Life →</span></a><a class="dept-card" id="events" href="events.html"><div class="section-label">EVENTS</div><h3>Upcoming Events</h3><p>Technical fests, cultural programs, workshops, hackathons and seminars.</p><span class="text-link">Event Calendar →</span></a></div><div class="dept-card" style="margin-top:25px"><div class="section-label">OFFICIAL INFORMATION</div><h3>News publishing</h3><p>These categories are ready for verified institute announcements, dates, photos and event reports.</p></div><a class="back-home" href="home.html">← Back to Home</a></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus News & Announcements | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+  <style>
+    .news-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 24px; }
+    .news-detail-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 26px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); border-left: 4px solid var(--gold); }
+    .news-detail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-left-color: var(--teal); background: #fbfdfe; }
+  </style>
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">CAMPUS INFORMATION & MEDIA CELL</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Official Press Releases, Admissions, Examinations & Academic Circulars</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html">Digital Library</a></li>
+        <li><a href="campus-map.html">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero">
+    <div class="container">
+      <div class="section-label">CAMPUS INFORMATION CELL</div>
+      <h1>College News & Circulars</h1>
+      <p>Official announcements, admission notifications, examination schedules, campus recruitment alerts, and institute press releases.</p>
+    </div>
+  </section>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All News & Circulars</button>
+        <button class="filter-tab" data-filter="Examinations">Examinations</button>
+        <button class="filter-tab" data-filter="Placements">Placements</button>
+        <button class="filter-tab" data-filter="Admissions">Admissions</button>
+        <button class="filter-tab" data-filter="Events">Events & Hackathons</button>
+        <button class="filter-tab" data-filter="Academic">Academic Notices</button>
+      </div>
+
+      <!-- News Grid -->
+      <div class="news-card-grid" id="newsGrid">
+        <!-- Dynamically populated from student-data.js getStoredNotices() -->
+      </div>
+
+      <div class="dept-contact" style="margin-top:48px">
+        <div>
+          <div class="section-label">MEDIA & PUBLIC RELATIONS</div>
+          <h3>Need to publish an official institute circular?</h3>
+          <p>Authorized department coordinators can publish circulars through the Admin Management Console.</p>
+        </div>
+        <a class="btn primary" href="admin-portal.html">Access Admin Portal</a>
+      </div>
+
+      <a class="back-home" href="home.html">← Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>NEWS & MEDIA</h4>
+        <a href="news.html">All News</a>
+        <a href="events.html">Events</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="top-performers.html">Top Performers</a>
+      </div>
+      <div>
+        <h4>ACADEMICS</h4>
+        <a href="departments.html">Departments</a>
+        <a href="library.html">Digital Library</a>
+        <a href="placements.html">Placements</a>
+        <a href="student-life.html">Student Life</a>
+      </div>
+      <div>
+        <h4>PORTALS</h4>
+        <a href="student-portal.html">Student Portal</a>
+        <a href="admin-portal.html">Admin Portal</a>
+        <a href="campus-map.html">Campus Map</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Public Relations & Information Cell</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('newsGrid');
+      const tabs = document.querySelectorAll('.filter-tab');
+      let currentFilter = 'all';
+
+      function render() {
+        let notices = getStoredNotices();
+        if (currentFilter !== 'all') {
+          notices = notices.filter(n => n.category === currentFilter);
+        }
+
+        if (notices.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">No circulars found in this category.</div>';
+          return;
+        }
+
+        grid.innerHTML = notices.map(n => `
+          <div class="news-detail-card">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                <span class="badge ${n.badge === 'High Priority' ? 'danger' : 'info'}">${n.badge}</span>
+                <small style="color:var(--muted);font-size:12px">📅 ${n.date}</small>
+              </div>
+              <h3 style="font-family:Georgia,serif;font-size:17.5px;color:var(--navy);margin-bottom:10px;line-height:1.35">${n.title}</h3>
+              <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Category: <b>${n.category}</b> · Published by Institute Academic Registrar.</p>
+            </div>
+            <div>
+              <a href="${n.link || 'news.html'}" class="btn primary" style="width:100%;min-height:36px;padding:6px 12px;font-size:13px">
+                Read Official Notice & Details →
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      tabs.forEach(t => {
+        t.addEventListener('click', () => {
+          tabs.forEach(x => x.classList.remove('active'));
+          t.classList.add('active');
+          currentFilter = t.dataset.filter;
+          render();
+        });
+      });
+
+      render();
+    });
+  </script>
+</body>
+</html>

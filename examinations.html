@@ -1,1 +1,200 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Examinations | Ganesh Institute of Technology</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="department-page.css"></head><body class="dept-page"><section class="dept-hero"><div class="container"><div class="section-label">ACADEMICS</div><h1>Examinations</h1><p>Schedules, notifications, results and examination-related student information.</p></div></section><nav class="dept-nav"><div class="container"><a href="home.html">← Home</a><a href="#notices">Notices</a><a href="#schedule">Schedule</a><a href="#results">Results</a><a href="#internals">Internals</a><a href="student-portal.html">Student Portal</a></div></nav><main class="dept-content"><div class="container"><div class="dept-sections"><a class="dept-card" id="notices" href="exam-notices.html"><div class="section-label">EXAM NOTICES</div><h3>Notifications</h3><p>Exam fee notices, registration deadlines, hall-ticket information and important instructions.</p><span class="text-link">View Notices →</span></a><a class="dept-card" id="schedule" href="exam-schedule.html"><div class="section-label">TIME TABLE</div><h3>Examination Schedule</h3><p>Semester examination timetable, session information and examination-day instructions.</p><span class="text-link">View Schedule →</span></a><a class="dept-card" id="results" href="student-portal.html"><div class="section-label">RESULTS</div><h3>Results & Marks</h3><p>Semester results, grades and academic performance records for authenticated students.</p><span class="text-link">Open Results Portal →</span></a><a class="dept-card" id="internals" href="student-portal.html"><div class="section-label">CONTINUOUS ASSESSMENT</div><h3>Internal Assessments</h3><p>Internal examinations, assignments, continuous assessment and academic updates.</p><span class="text-link">Student Dashboard →</span></a></div><section class="dept-contact"><div><div class="section-label">STUDENT SUPPORT</div><h3>Need your personal examination information?</h3><p>Use the student portal for authenticated academic records.</p></div><a class="btn primary" href="student-portal.html">Open Student Portal</a></section><div class="dept-card" style="margin-top:25px"><div class="section-label">DATA NOTICE</div><h3>Official examination information</h3><p>Actual dates, timetables and results should be published only from verified institute records.</p></div><a class="back-home" href="home.html">← Back to Home</a></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examinations & Autonomous Assessments | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">OFFICE OF CONTROLLER OF EXAMINATIONS</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Kurnool, Andhra Pradesh &nbsp; | &nbsp; Autonomous Academic System</p>
+          <strong>Examination Cell • Time Tables • Results • Hall Tickets</strong>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html" class="active">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html">Digital Library</a></li>
+        <li><a href="campus-map.html">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero">
+    <div class="container">
+      <div class="section-label">ACADEMIC EXAMINATIONS CELL</div>
+      <h1>Examinations & Academic Evaluation</h1>
+      <p>Schedules, official circulars, hall tickets, continuous internal marks, and semester end results.</p>
+    </div>
+  </section>
+
+  <nav class="dept-nav">
+    <div class="container">
+      <a href="home.html">← Home</a>
+      <a href="#notices">Circulars & Notices</a>
+      <a href="#schedule">Exam Schedules</a>
+      <a href="#portal">Results & Hall Tickets</a>
+      <a href="#regulations">Regulations & Grading</a>
+      <a href="#contact">Exam Cell Contact</a>
+    </div>
+  </nav>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <!-- Exam Cell Hub Cards -->
+      <div class="dept-sections">
+        <a class="dept-card" id="notices" href="exam-notices.html">
+          <div class="section-label">OFFICIAL CIRCULARS</div>
+          <h3>Notifications & Bulletins</h3>
+          <p>Fee payment schedules, examination registration deadlines, condonation lists, and instructions.</p>
+          <span class="text-link">View All Circulars →</span>
+        </a>
+
+        <a class="dept-card" id="schedule" href="exam-schedule.html">
+          <div class="section-label">TIME TABLES</div>
+          <h3>Examination Schedules</h3>
+          <p>Semester end theory date sheets, lab examination schedules, session times, and room allocations.</p>
+          <span class="text-link">View Exam Schedules →</span>
+        </a>
+
+        <a class="dept-card" id="portal" href="student-portal.html">
+          <div class="section-label">STUDENT DASHBOARD</div>
+          <h3>Results & Digital Hall Ticket</h3>
+          <p>Download printable examination hall ticket and access continuous assessment grades.</p>
+          <span class="text-link">Open Student Portal →</span>
+        </a>
+
+        <a class="dept-card" href="internal-marks.html">
+          <div class="section-label">ASSESSMENTS</div>
+          <h3>Continuous Internal Evaluation</h3>
+          <p>Mid-1, Mid-2 examination scores, assignment marks, and laboratory evaluations.</p>
+          <span class="text-link">Check Internal Marks →</span>
+        </a>
+      </div>
+
+      <!-- Regulations & Grading -->
+      <div class="dept-intro" id="regulations" style="margin-top:48px">
+        <div class="dept-card" style="flex:1">
+          <div class="section-label">AUTONOMOUS GRADING SYSTEM</div>
+          <h3>R22 Regulation 10-Point Letter Grading Scheme</h3>
+          <table class="data-table" style="margin-top:14px;font-size:13px">
+            <thead>
+              <tr><th>Marks Range</th><th>Grade</th><th>Grade Points</th><th>Performance</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>90% - 100%</td><td><b>O</b></td><td>10.0</td><td>Outstanding</td></tr>
+              <tr><td>80% - 89%</td><td><b>A+</b></td><td>9.0</td><td>Excellent</td></tr>
+              <tr><td>70% - 79%</td><td><b>A</b></td><td>8.0</td><td>Very Good</td></tr>
+              <tr><td>60% - 69%</td><td><b>B+</b></td><td>7.0</td><td>Good</td></tr>
+              <tr><td>50% - 59%</td><td><b>B</b></td><td>6.0</td><td>Above Average</td></tr>
+              <tr><td>40% - 49%</td><td><b>C</b></td><td>5.0</td><td>Pass</td></tr>
+              <tr><td>&lt; 40%</td><td><b>F</b></td><td>0.0</td><td>Fail (Re-appear)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Contact Banner -->
+      <section class="dept-contact" id="contact">
+        <div>
+          <div class="section-label">EXAMINATION CONTROLLER</div>
+          <h3>Examination Support & Transcripts Office</h3>
+          <p>Ganesh Institute of Technology · Administrative Block Ground Floor</p>
+          <p>📞 Phone: +91 9963623910 &nbsp;|&nbsp; ✉ Email: lsvsaravananganesh@gmail.com</p>
+        </div>
+        <a class="btn primary" href="student-portal.html">Student Self-Service Portal</a>
+      </section>
+
+      <a class="back-home" href="home.html">← Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>EXAMINATIONS</h4>
+        <a href="examinations.html">Examinations Overview</a>
+        <a href="exam-schedule.html">Timetable Schedules</a>
+        <a href="exam-notices.html">Official Circulars</a>
+        <a href="top-performers.html">Top Performers</a>
+      </div>
+      <div>
+        <h4>ACADEMICS</h4>
+        <a href="departments.html">Departments</a>
+        <a href="syllabus-ece.html">Syllabus</a>
+        <a href="library.html">Digital Library</a>
+        <a href="placements.html">Placements</a>
+      </div>
+      <div>
+        <h4>PORTALS</h4>
+        <a href="student-portal.html">Student Dashboard</a>
+        <a href="admin-portal.html">Admin Dashboard</a>
+        <a href="campus-map.html">Campus Map</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Examination & Evaluation Division</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

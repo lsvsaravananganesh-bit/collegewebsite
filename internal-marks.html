@@ -1,1 +1,236 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Internal Marks | Ganesh Institute of Technology</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="department-page.css"></head><body class="dept-page"><section class="dept-hero"><div class="container"><div class="section-label">STUDENT SERVICE</div><h1>Internal Marks</h1><p>View internal assessment and continuous evaluation records.</p></div></section><main class="dept-content"><div class="container"><div class="dept-card"><h3>Assessment Records</h3><p>Internal marks, assignments and continuous assessment can be connected to the official student database here.</p><span class="demo">PORTAL DEMO — no real records connected</span></div><a class="back-home" href="student-portal.html">← Back to Student Portal</a></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Internal Assessment Marks | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+  <link rel="stylesheet" href="student-portal.css">
+  <style>
+    .demo-bar { background: #fff8e8; border: 1px solid #ebd498; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #694f13; }
+  </style>
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">CONTINUOUS INTERNAL EVALUATION (CIE)</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Continuous Assessment, Mid-Term Examinations & Laboratory Internal Marks</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html">Digital Library</a></li>
+        <li><a href="campus-map.html">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html" class="active">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero" style="padding:48px 0">
+    <div class="container">
+      <div class="section-label">STUDENT DASHBOARD SERVICE</div>
+      <h1>Internal Assessment Marks</h1>
+      <p>Continuous assessment marks for Mid Examination 1, Mid Examination 2, assignments, quizzes, and laboratory work.</p>
+    </div>
+  </section>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <div class="demo-bar">
+        <span>Showing internal evaluation for: <b id="marksStudentLabel">Rahul Kumar (GI001 - ECE)</b></span>
+        <div style="display:flex;gap:10px">
+          <select id="marksStudentSelect" style="padding:4px 8px;border-radius:4px;border:1px solid #d4b568;font-size:12.5px">
+            <option value="GI001">Rahul Kumar (GI001 - ECE · 8.2 CGPA)</option>
+            <option value="GI002">Priya Reddy (GI002 - CSE · 8.7 CGPA)</option>
+            <option value="GI003">Arjun Kumar (GI003 - EEE · 7.9 CGPA)</option>
+            <option value="GI004">Sneha Reddy (GI004 - CSE · 9.1 CGPA)</option>
+            <option value="GI005">Kiran Kumar (GI005 - ME · 7.6 CGPA)</option>
+          </select>
+          <a href="student-portal.html" class="btn primary" style="min-height:30px;padding:4px 12px;font-size:12px">Portal Dashboard →</a>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <small>CURRENT CGPA</small>
+          <strong id="marksCgpaVal">8.2</strong>
+          <span>Calculated up to Semester V</span>
+        </div>
+        <div class="metric-card">
+          <small>CIE AVERAGE</small>
+          <strong>36.5 / 40</strong>
+          <span class="status-pill safe">Grade: A+ (Outstanding)</span>
+        </div>
+        <div class="metric-card">
+          <small>ASSIGNMENT CREDITS</small>
+          <strong>10 / 10</strong>
+          <span>Full marks awarded</span>
+        </div>
+        <div class="metric-card">
+          <small>TOTAL COURSES</small>
+          <strong>5 Courses</strong>
+          <span>4 Theory + 1 Laboratory</span>
+        </div>
+      </div>
+
+      <div class="portal-card">
+        <h2>Continuous Internal Assessment Component Matrix</h2>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Course Name</th>
+                <th>Mid 1 (30)</th>
+                <th>Mid 2 (30)</th>
+                <th>Assignment (10)</th>
+                <th>Total CIE (40/50)</th>
+                <th>Performance Grade</th>
+              </tr>
+            </thead>
+            <tbody id="marksPageTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="portal-card">
+        <h2>Internal Assessment Weightage Formula (R22 Autonomous Scheme)</h2>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.7">
+          Internal Marks (40 marks) = 80% weightage for best Mid Exam + 20% weightage for other Mid Exam (Total 30 marks) + 10 marks for assignments/quizzes/active learning projects. Semester End Examination accounts for 60 marks (Total 100 marks per course).
+        </p>
+        <div style="margin-top:18px">
+          <a class="btn primary" href="student-portal.html">View on Student Portal</a>
+          <a class="btn outline" style="color:var(--navy);border-color:var(--line);background:#fff" href="examinations.html">Semester Examination Details →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>ACADEMIC LINKS</h4>
+        <a href="student-portal.html">Student Portal</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="timetable.html">Timetable</a>
+        <a href="fees.html">Fee Records</a>
+      </div>
+      <div>
+        <h4>EXAMINATIONS</h4>
+        <a href="examinations.html">Examinations Overview</a>
+        <a href="exam-schedule.html">Exam Schedules</a>
+        <a href="exam-notices.html">Exam Notices</a>
+        <a href="top-performers.html">Top Performers</a>
+      </div>
+      <div>
+        <h4>PORTALS</h4>
+        <a href="admin-portal.html">Admin Portal</a>
+        <a href="library.html">Digital Library</a>
+        <a href="campus-map.html">Campus Map</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Continuous Internal Assessment Portal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const active = getStudentSession() || findStudent('GI001');
+      const switchSelect = document.getElementById('marksStudentSelect');
+
+      function render(s) {
+        if (!s) return;
+        document.getElementById('marksStudentLabel').textContent = `${s.name} (${s.id} - ${s.department})`;
+        document.getElementById('marksCgpaVal').textContent = s.cgpa;
+
+        const tbody = document.getElementById('marksPageTbody');
+        const list = s.internalMarks || [];
+        tbody.innerHTML = list.map(m => {
+          const grade = m.total >= 36 ? 'A+ (Distinction)' : m.total >= 30 ? 'A (Excellent)' : 'B (Good)';
+          return `
+            <tr>
+              <td><b>${m.code}</b></td>
+              <td>${m.subject}</td>
+              <td>${m.mid1}</td>
+              <td>${m.mid2}</td>
+              <td>${m.assign}</td>
+              <td><b>${m.total} / ${m.max}</b></td>
+              <td><span class="status-pill safe">${grade}</span></td>
+            </tr>
+          `;
+        }).join('');
+
+        if (switchSelect) switchSelect.value = s.id;
+      }
+
+      render(active);
+
+      if (switchSelect) {
+        switchSelect.addEventListener('change', () => {
+          const st = findStudent(switchSelect.value);
+          if (st) render(st);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

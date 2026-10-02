@@ -1,1 +1,218 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Examination Schedule | Ganesh Institute of Technology</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="department-page.css"></head><body class="dept-page"><section class="dept-hero"><div class="container"><div class="section-label">TIME TABLE</div><h1>Examination Schedule</h1><p>Semester examination timetable and session information.</p></div></section><main class="dept-content"><div class="container"><div class="dept-card"><h3>Official Timetable</h3><p>Verified semester examination dates, sessions and room information can be published here.</p><p><strong>Status:</strong> Schedule to be updated from official institute records.</p></div><a class="back-home" href="examinations.html">← Back to Examinations</a></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examination Schedules & Date Sheets | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+  <link rel="stylesheet" href="student-portal.css">
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">OFFICE OF CONTROLLER OF EXAMINATIONS</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Semester End Examinations Date Sheets & Time Schedules (R22 Autonomous Regulations)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html" class="active">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html">Digital Library</a></li>
+        <li><a href="campus-map.html">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero">
+    <div class="container">
+      <div class="section-label">EXAMINATION CELL</div>
+      <h1>Examination Schedules</h1>
+      <p>Official timetable for B.Tech Even Semester Regular and Supplementary Examinations (October / November 2026).</p>
+    </div>
+  </section>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <!-- Filters & Download -->
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:var(--shadow-sm);margin-bottom:28px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;flex:1">
+            <select id="branchSelect" style="padding:10px 14px;border:1px solid var(--line);border-radius:6px;font-size:13.5px">
+              <option value="ALL">All Branches</option>
+              <option value="ECE">ECE (Electronics & Communication)</option>
+              <option value="CSE">CSE (Computer Science)</option>
+              <option value="EEE">EEE (Electrical & Electronics)</option>
+              <option value="ME">ME (Mechanical Engineering)</option>
+              <option value="Civil">Civil Engineering</option>
+            </select>
+            <select id="semSelect" style="padding:10px 14px;border:1px solid var(--line);border-radius:6px;font-size:13.5px">
+              <option value="ALL">All Semesters</option>
+              <option value="VI">B.Tech VI Semester (Year III)</option>
+              <option value="IV">B.Tech IV Semester (Year II)</option>
+              <option value="VIII">B.Tech VIII Semester (Year IV)</option>
+            </select>
+          </div>
+          <button onclick="window.print()" class="btn primary" style="min-height:38px;padding:8px 18px">🖨️ Print / Download Date Sheet</button>
+        </div>
+      </div>
+
+      <!-- Schedule Table -->
+      <div class="portal-card">
+        <h2>B.Tech Even Semester Regular Examinations Timetable</h2>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Reporting Time: 09:00 AM &nbsp;|&nbsp; Examination Session: 09:30 AM to 12:30 PM</p>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date & Day</th>
+                <th>Branch</th>
+                <th>Sem</th>
+                <th>Course Code</th>
+                <th>Subject Title</th>
+                <th>Session</th>
+              </tr>
+            </thead>
+            <tbody id="examTbody">
+              <tr data-branch="ECE" data-sem="VI"><td><b>20-10-2026 (Tue)</b></td><td><span class="badge info">ECE</span></td><td>VI</td><td><b>22EC601</b></td><td>VLSI Design & CMOS Microelectronics</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="CSE" data-sem="VI"><td><b>20-10-2026 (Tue)</b></td><td><span class="badge info">CSE</span></td><td>VI</td><td><b>22CS601</b></td><td>Compiler Design & Optimization</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="EEE" data-sem="VI"><td><b>20-10-2026 (Tue)</b></td><td><span class="badge info">EEE</span></td><td>VI</td><td><b>22EE601</b></td><td>Power System Analysis</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="ME" data-sem="VIII"><td><b>20-10-2026 (Tue)</b></td><td><span class="badge info">ME</span></td><td>VIII</td><td><b>22ME801</b></td><td>CAD/CAM & CIM</td><td>09:30 AM - 12:30 PM</td></tr>
+
+              <tr data-branch="ECE" data-sem="VI"><td><b>22-10-2026 (Thu)</b></td><td><span class="badge info">ECE</span></td><td>VI</td><td><b>22EC602</b></td><td>Embedded Systems & Internet of Things</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="CSE" data-sem="VI"><td><b>22-10-2026 (Thu)</b></td><td><span class="badge info">CSE</span></td><td>VI</td><td><b>22CS602</b></td><td>Web Technologies & Full Stack Frameworks</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="EEE" data-sem="VI"><td><b>22-10-2026 (Thu)</b></td><td><span class="badge info">EEE</span></td><td>VI</td><td><b>22EE602</b></td><td>Power Electronics & Electric Drives</td><td>09:30 AM - 12:30 PM</td></tr>
+
+              <tr data-branch="ECE" data-sem="VI"><td><b>25-10-2026 (Sun)</b></td><td><span class="badge info">ECE</span></td><td>VI</td><td><b>22EC603</b></td><td>Microwave Engineering & Radar</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="CSE" data-sem="VI"><td><b>25-10-2026 (Sun)</b></td><td><span class="badge info">CSE</span></td><td>VI</td><td><b>22CS603</b></td><td>Machine Learning Principles</td><td>09:30 AM - 12:30 PM</td></tr>
+
+              <tr data-branch="ECE" data-sem="VI"><td><b>28-10-2026 (Wed)</b></td><td><span class="badge info">ECE</span></td><td>VI</td><td><b>22PE604</b></td><td>Cellular & 5G Wireless Communications</td><td>09:30 AM - 12:30 PM</td></tr>
+              <tr data-branch="CSE" data-sem="VI"><td><b>28-10-2026 (Wed)</b></td><td><span class="badge info">CSE</span></td><td>VI</td><td><b>22CS604</b></td><td>Cloud Computing & DevOps Architectures</td><td>09:30 AM - 12:30 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Guidelines -->
+      <div class="portal-card">
+        <h2>Important Examination Hall Instructions</h2>
+        <ul style="padding-left:22px;color:var(--muted);font-size:14px;line-height:2">
+          <li>Candidates must carry valid Hall Tickets and College ID Cards to enter the examination premises.</li>
+          <li>Electronic gadgets, smartwatches, programmable calculators, and bags are strictly forbidden.</li>
+          <li>Late entry beyond 15 minutes of commencement will not be entertained under any circumstance.</li>
+          <li>Students facing attendance shortages must obtain necessary condonation clearance from the Registrar.</li>
+        </ul>
+        <div style="margin-top:20px;display:flex;gap:12px">
+          <a class="btn primary" href="student-portal.html">Download Digital Hall Ticket</a>
+          <a class="btn outline" style="color:var(--navy);border-color:var(--line);background:#fff" href="exam-notices.html">View Exam Notifications →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>EXAMINATIONS</h4>
+        <a href="examinations.html">Examinations Cell</a>
+        <a href="exam-schedule.html">Timetable Schedules</a>
+        <a href="exam-notices.html">Official Circulars</a>
+        <a href="top-performers.html">Top Performers</a>
+      </div>
+      <div>
+        <h4>ACADEMICS</h4>
+        <a href="departments.html">Departments</a>
+        <a href="syllabus-ece.html">ECE Syllabus</a>
+        <a href="library.html">Digital Library</a>
+        <a href="placements.html">Placements</a>
+      </div>
+      <div>
+        <h4>PORTALS</h4>
+        <a href="student-portal.html">Student Dashboard</a>
+        <a href="admin-portal.html">Admin Dashboard</a>
+        <a href="campus-map.html">Campus Map</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Office of Controller of Examinations</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bSelect = document.getElementById('branchSelect');
+      const sSelect = document.getElementById('semSelect');
+      const rows = document.querySelectorAll('#examTbody tr');
+
+      function filter() {
+        const b = bSelect.value;
+        const s = sSelect.value;
+
+        rows.forEach(r => {
+          const matchBranch = b === 'ALL' || r.dataset.branch === b;
+          const matchSem = s === 'ALL' || r.dataset.sem === s;
+          r.style.display = (matchBranch && matchSem) ? '' : 'none';
+        });
+      }
+
+      bSelect.addEventListener('change', filter);
+      sSelect.addEventListener('change', filter);
+    });
+  </script>
+</body>
+</html>

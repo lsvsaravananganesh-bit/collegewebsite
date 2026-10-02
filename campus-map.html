@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Campus Map & Virtual Guide | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+  <style>
+    .map-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 28px; margin-top: 24px; align-items: start; }
+    .map-svg-wrap { background: #eef6f8; border-radius: 16px; border: 2px solid var(--line); padding: 18px; box-shadow: var(--shadow-md); position: relative; }
+    .map-building { cursor: pointer; transition: all 0.25s; }
+    .map-building:hover, .map-building.selected { filter: drop-shadow(0 4px 10px rgba(23,107,115,0.4)); transform-origin: center; }
+    .building-info-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px; box-shadow: var(--shadow-md); position: sticky; top: 100px; }
+    .building-info-card h2 { font-family: Georgia, serif; color: var(--navy); font-size: 22px; margin-bottom: 6px; }
+    .floor-list { list-style: none; padding: 0; margin-top: 14px; }
+    .floor-list li { padding: 10px 12px; background: var(--soft); border-radius: 6px; margin-bottom: 8px; font-size: 13px; border-left: 3px solid var(--teal); }
+    .floor-list li b { color: var(--navy); display: block; margin-bottom: 2px; }
+    @media (max-width: 900px) {
+      .map-layout { grid-template-columns: 1fr; }
+      .building-info-card { position: static; }
+    }
+  </style>
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">CAMPUS NAVIGATION & VIRTUAL TOUR</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Kurnool, Andhra Pradesh · 45-Acre Smart Green Engineering Campus</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html">Digital Library</a></li>
+        <li><a href="campus-map.html" class="active">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero">
+    <div class="container">
+      <div class="section-label">INTERACTIVE CAMPUS DIRECTORY</div>
+      <h1>Explore Our Campus</h1>
+      <p>Click on any building or zone on the interactive map below to view departmental locations, laboratories, floor guides, and key administrative facilities.</p>
+    </div>
+  </section>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Zones</button>
+        <button class="filter-tab" data-filter="academic">Academic Blocks</button>
+        <button class="filter-tab" data-filter="admin">Administrative & Exam</button>
+        <button class="filter-tab" data-filter="amenities">Library & Student Life</button>
+        <button class="filter-tab" data-filter="sports">Sports & Hostels</button>
+      </div>
+
+      <div class="map-layout">
+        
+        <!-- Interactive Vector Map SVG -->
+        <div class="map-svg-wrap">
+          <svg viewBox="0 0 900 600" width="100%" height="auto" style="border-radius:10px">
+            <!-- Background Landscape -->
+            <rect width="900" height="600" rx="12" fill="#d9ebec"/>
+            
+            <!-- Campus Roads & Pathways -->
+            <path d="M 50 300 Q 250 300 450 300 T 850 300" stroke="#b4ced4" stroke-width="32" fill="none"/>
+            <path d="M 450 60 L 450 540" stroke="#b4ced4" stroke-width="26" fill="none"/>
+            <circle cx="450" cy="300" r="50" fill="#c3dfe3"/>
+            <text x="450" y="305" font-size="12" font-weight="700" fill="#12304a" text-anchor="middle">CENTRAL CIRCLE</text>
+
+            <!-- Campus Entry Gate -->
+            <rect x="20" y="275" width="40" height="50" rx="4" fill="#12304a"/>
+            <text x="40" y="345" font-size="11" font-weight="800" fill="#12304a" text-anchor="middle">MAIN GATE</text>
+
+            <!-- Building 1: Administrative Block -->
+            <g class="map-building" data-id="admin" data-type="admin">
+              <rect x="120" y="140" width="180" height="110" rx="10" fill="#12304a" stroke="#d5a84b" stroke-width="3"/>
+              <text x="210" y="190" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">ADMINISTRATIVE BLOCK</text>
+              <text x="210" y="210" font-size="11" fill="#e7d4a5" text-anchor="middle">Principal · Registrar · COE</text>
+            </g>
+
+            <!-- Building 2: Main Academic Block (CSE & AI Wing) -->
+            <g class="map-building" data-id="cse-block" data-type="academic">
+              <rect x="360" y="110" width="220" height="130" rx="10" fill="#176b73" stroke="#fff" stroke-width="3"/>
+              <text x="470" y="165" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">TECH BLOCK A (CSE & AI)</text>
+              <text x="470" y="185" font-size="11" fill="#c4edf1" text-anchor="middle">CSE · AI & ML · AI & DS</text>
+              <text x="470" y="205" font-size="10" fill="#fff" text-anchor="middle">Computing Complex & Labs</text>
+            </g>
+
+            <!-- Building 3: Tech Block B (ECE & EEE) -->
+            <g class="map-building" data-id="ece-block" data-type="academic">
+              <rect x="630" y="120" width="210" height="120" rx="10" fill="#1b456b" stroke="#fff" stroke-width="3"/>
+              <text x="735" y="170" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">TECH BLOCK B (ECE & EEE)</text>
+              <text x="735" y="190" font-size="11" fill="#cbdde8" text-anchor="middle">VLSI · Embedded · Power Labs</text>
+            </g>
+
+            <!-- Building 4: Central Digital Library -->
+            <g class="map-building" data-id="library" data-type="amenities">
+              <rect x="120" y="360" width="180" height="130" rx="10" fill="#248b8d" stroke="#fff" stroke-width="3"/>
+              <text x="210" y="420" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">CENTRAL LIBRARY</text>
+              <text x="210" y="440" font-size="11" fill="#e1f7f8" text-anchor="middle">Digital Hub · E-Journals</text>
+            </g>
+
+            <!-- Building 5: Mechanical & Civil Workshops -->
+            <g class="map-building" data-id="mech-block" data-type="academic">
+              <rect x="360" y="370" width="220" height="130" rx="10" fill="#071b2b" stroke="#fff" stroke-width="3"/>
+              <text x="470" y="425" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">WORKSHOPS & CORE ENGG</text>
+              <text x="470" y="445" font-size="11" fill="#cbdde8" text-anchor="middle">CAD/CAM · Robotics · Concrete</text>
+            </g>
+
+            <!-- Building 6: Sports Arena & Hostels -->
+            <g class="map-building" data-id="sports-hostels" data-type="sports">
+              <rect x="640" y="370" width="200" height="130" rx="10" fill="#2d6a4f" stroke="#fff" stroke-width="3"/>
+              <text x="740" y="425" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">SPORTS & RESIDENCES</text>
+              <text x="740" y="445" font-size="11" fill="#d8f3dc" text-anchor="middle">Hostels · Cafeteria · Ground</text>
+            </g>
+          </svg>
+          <div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">
+            💡 <i>Interactive: Click any building block above to inspect floor maps and facilities.</i>
+          </div>
+        </div>
+
+        <!-- Building Details Card -->
+        <div class="building-info-card" id="buildingCard">
+          <span class="badge info" id="bTypeBadge">Academic Zone</span>
+          <h2 id="bTitle">Tech Block A (Computing & AI)</h2>
+          <p id="bDesc" style="font-size:14px;color:var(--muted)">The premier digital engineering facility housing computer science, artificial intelligence, data science laboratories, and high-performance computing clusters.</p>
+
+          <h4 style="font-size:14px;color:var(--navy);margin-top:18px">Floor-by-Floor Guide:</h4>
+          <ul class="floor-list" id="bFloors">
+            <li><b>Ground Floor:</b> Department of Computer Science (CSE Office), Web Tech Lab, Turing Seminar Hall.</li>
+            <li><b>1st Floor:</b> Artificial Intelligence & ML Research Center, Deep Learning GPU Cluster.</li>
+            <li><b>2nd Floor:</b> Data Analytics & Big Data Center, Cloud Computing & DevOps Facility.</li>
+            <li><b>3rd Floor:</b> CoderClub Innovation Lab, Competitive Programming Lounge & Faculty Chambers.</li>
+          </ul>
+
+          <div style="margin-top:24px;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:var(--muted)" id="bContact">Extension: Ext. 201 · Block A</span>
+            <a href="departments.html" class="btn primary" style="min-height:34px;padding:6px 14px;font-size:12px">Explore Departments →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Campus Features Banner -->
+      <div class="dept-intro" style="margin-top:48px">
+        <div class="dept-card">
+          <div class="section-label">INFRASTRUCTURE HIGHLIGHTS</div>
+          <h3>Eco-Friendly & Smart Campus</h3>
+          <ul style="padding-left:20px;color:var(--muted);font-size:14px;line-height:2">
+            <li><b>Solar Powered:</b> 250 kW rooftop solar photovoltaic grid power generation.</li>
+            <li><b>High-Speed Connectivity:</b> 1 Gbps high-speed optical fiber backbone with campus-wide Wi-Fi.</li>
+            <li><b>Smart Classrooms:</b> Fully air-conditioned multimedia smart lecture halls with interactive displays.</li>
+            <li><b>Health & Safety:</b> 24/7 medical health center, resident doctor, and CCTV monitored security.</li>
+          </ul>
+        </div>
+        <div class="dept-card">
+          <div class="section-label">VISITING & DIRECTIONS</div>
+          <h3>How to Reach GIT Campus</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.7">
+            Located conveniently along the main institutional corridor in Kurnool, Andhra Pradesh. Just 15 minutes from Kurnool City Railway Station and well-connected by APSRTC bus transit lines.
+          </p>
+          <a class="btn primary" style="margin-top:14px" href="mailto:lsvsaravananganesh@gmail.com">Schedule a Campus Visit</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>CAMPUS</h4>
+        <a href="campus-map.html">Interactive Map</a>
+        <a href="college-details.html">Facilities</a>
+        <a href="profile.html">About Institute</a>
+        <a href="student-life.html">Student Life</a>
+      </div>
+      <div>
+        <h4>ACADEMICS</h4>
+        <a href="departments.html">Departments</a>
+        <a href="library.html">Digital Library</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="placements.html">Placements</a>
+      </div>
+      <div>
+        <h4>PORTALS</h4>
+        <a href="student-portal.html">Student Portal</a>
+        <a href="admin-portal.html">Admin Portal</a>
+        <a href="reviews.html">Community Reviews</a>
+        <a href="news.html">News & Updates</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Interactive Campus Guide</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buildings = {
+        'admin': {
+          title: 'Administrative Block & Central Office',
+          type: 'Administrative Zone',
+          desc: 'Houses the Principal Office, Registrar, Controller of Examinations, Admissions Directorate, and Academic Accounts Cell.',
+          contact: 'Office Phone: 9963623910 · Admin Block',
+          floors: [
+            'Ground Floor: Admissions Cell, Fee Counter, Academic Verification & Reception.',
+            '1st Floor: Controller of Examinations (COE), Evaluation Cell & Secure Printing Room.',
+            '2nd Floor: Office of the Principal, Dean Academic Affairs & Board Room.',
+            '3rd Floor: Internal Quality Assurance Cell (IQAC) & HR Directorate.'
+          ]
+        },
+        'cse-block': {
+          title: 'Tech Block A (Computing & AI)',
+          type: 'Academic Zone',
+          desc: 'The premier digital engineering facility housing computer science, artificial intelligence, data science laboratories, and high-performance computing clusters.',
+          contact: 'Extension: Ext. 201 · Tech Block A',
+          floors: [
+            'Ground Floor: Department of Computer Science (CSE Office), Web Tech Lab, Turing Seminar Hall.',
+            '1st Floor: Artificial Intelligence & ML Research Center, Deep Learning GPU Cluster.',
+            '2nd Floor: Data Analytics & Big Data Center, Cloud Computing & DevOps Facility.',
+            '3rd Floor: CoderClub Innovation Lab, Competitive Programming Lounge & Faculty Chambers.'
+          ]
+        },
+        'ece-block': {
+          title: 'Tech Block B (ECE & EEE)',
+          type: 'Academic Zone',
+          desc: 'Hardware engineering powerhouse featuring microelectronics, VLSI fabrication design labs, embedded systems, and power electronics facilities.',
+          contact: 'Extension: Ext. 301 · Tech Block B',
+          floors: [
+            'Ground Floor: Electronic Devices & Circuits Lab, Analog Communications Lab.',
+            '1st Floor: VLSI & Cadence Design Suites, ARM & Microprocessor Center.',
+            '2nd Floor: Electrical Machines Laboratory, Power Electronics & Renewable Energy Lab.',
+            '3rd Floor: ECE & EEE Department Offices, Faraday Conference Room & Faculty Workstations.'
+          ]
+        },
+        'library': {
+          title: 'Central Digital Library & Learning Centre',
+          type: 'Amenities & Study',
+          desc: 'A modern multi-storey knowledge sanctuary with over 45,000 volumes, 50 digital research terminals, IEEE access, and silent reading halls.',
+          contact: 'Extension: Ext. 104 · Central Library',
+          floors: [
+            'Ground Floor: Circulation Desk, New Arrivals, Newspaper Lounge & Book Bank.',
+            '1st Floor: Reference Section, Core Engineering Textbooks & Journal Archive.',
+            '2nd Floor: 50-Terminal Digital E-Library, IEEE Xplore & NPTEL Video Access Hub.',
+            '3rd Floor: Scholar Research Cubicles, Discussion Rooms & Thesis Archives.'
+          ]
+        },
+        'mech-block': {
+          title: 'Workshops & Core Engineering Block',
+          type: 'Academic Zone',
+          desc: 'Hands-on engineering workshops featuring CNC machines, CAD/CAM 3D design center, hydraulics, and materials testing facilities.',
+          contact: 'Extension: Ext. 401 · Workshop Block',
+          floors: [
+            'Ground Floor: Central Machine Shop, Foundry, Welding & Fitting Workshops.',
+            '1st Floor: CAD/CAM SolidWorks Design Center, 3D Printing Prototyping Hub.',
+            '2nd Floor: Concrete Technology & Strength of Materials Lab, Surveying Lab.',
+            '3rd Floor: Mechanical & Civil Engineering Department Offices & Seminar Hall.'
+          ]
+        },
+        'sports-hostels': {
+          title: 'Sports Arena, Dining & Hostels',
+          type: 'Sports & Residential',
+          desc: 'Campus life hub with cricket grounds, basketball and badminton courts, multi-cuisine dining hall, and secure student residences.',
+          contact: 'Extension: Ext. 501 · Campus Life',
+          floors: [
+            'Sports Complex: Indoor Badminton Courts, Table Tennis, Modern Gymnasium & Sports Officer Room.',
+            'Dining Complex: Hygienic Central Mess, Student Cafeteria & Bakery.',
+            'Hostel Block 1: Men\'s Residence Halls (Wi-Fi, Study Rooms, 24/7 Power).',
+            'Hostel Block 2: Women\'s Residence Halls (Secure Biometric Access, Resident Wardens).'
+          ]
+        }
+      };
+
+      const bElements = document.querySelectorAll('.map-building');
+      const bTitle = document.getElementById('bTitle');
+      const bDesc = document.getElementById('bDesc');
+      const bTypeBadge = document.getElementById('bTypeBadge');
+      const bFloors = document.getElementById('bFloors');
+      const bContact = document.getElementById('bContact');
+
+      function selectBuilding(id) {
+        const data = buildings[id];
+        if (!data) return;
+
+        bElements.forEach(el => el.classList.toggle('selected', el.dataset.id === id));
+        bTitle.textContent = data.title;
+        bDesc.textContent = data.desc;
+        bTypeBadge.textContent = data.type;
+        bContact.textContent = data.contact;
+        bFloors.innerHTML = data.floors.map(f => `<li><b>${f.split(':')[0]}:</b> ${f.split(':')[1]}</li>`).join('');
+      }
+
+      bElements.forEach(el => {
+        el.addEventListener('click', () => selectBuilding(el.dataset.id));
+      });
+
+      // Filter tabs
+      const tabs = document.querySelectorAll('.filter-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.dataset.filter;
+
+          bElements.forEach(el => {
+            if (filter === 'all' || el.dataset.type === filter) {
+              el.style.opacity = '1';
+              el.style.pointerEvents = 'auto';
+            } else {
+              el.style.opacity = '0.25';
+              el.style.pointerEvents = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,1 +1,255 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Attendance | Ganesh Institute of Technology</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="student-portal.css"><link rel="stylesheet" href="department-page.css"></head><body class="dept-page"><section class="dept-hero"><div class="container"><div class="section-label">STUDENT SERVICE</div><h1>Attendance</h1><p>Subject-wise attendance information for authenticated students.</p></div></section><main class="dept-content"><div class="container"><div class="dept-card"><h3>Attendance Dashboard</h3><p>Connect this page to your official student database to display subject-wise attendance, percentage and shortage alerts.</p><span class="demo">PORTAL DEMO — no real records connected</span></div><a class="back-home" href="student-portal.html">← Back to Student Portal</a></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attendance Tracker | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="department-page.css">
+  <link rel="stylesheet" href="student-portal.css">
+  <style>
+    .att-header-banner { background: linear-gradient(135deg, var(--navy-dark), var(--teal)); color: #fff; padding: 28px; border-radius: 14px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .demo-bar { background: #fff8e8; border: 1px solid #ebd498; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #694f13; }
+  </style>
+</head>
+<body class="dept-page">
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="container top-inner">
+      <span>📞 9963623910 &nbsp; | &nbsp; ✉ lsvsaravananganesh@gmail.com</span>
+      <span class="top-links">
+        <a href="profile.html">About Institute</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="news.html">News</a>
+        <a href="student-portal.html" class="portal-link">Student Portal</a>
+        <a href="admin-portal.html" class="portal-link">Admin Portal</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container branding">
+      <div class="brand-left">
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+        <div class="brand-text">
+          <div class="eyebrow">STUDENT ACADEMIC SERVICES</div>
+          <h1>Ganesh Institute of Technology</h1>
+          <p>Subject-Wise Attendance Monitoring & Shortage Alert System</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="search-trigger-btn"><span>🔍</span> Search <kbd>Ctrl+K</kbd></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">About Institute</a></li>
+        <li><a href="departments.html">Academics</a></li>
+        <li><a href="examinations.html">Examinations</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="library.html">Digital Library</a></li>
+        <li><a href="campus-map.html">Campus Map</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="student-portal.html" class="active">Student Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="dept-hero" style="padding:48px 0">
+    <div class="container">
+      <div class="section-label">STUDENT DASHBOARD SERVICE</div>
+      <h1>Live Attendance Tracking</h1>
+      <p>Real-time subject-wise lecture attendance, laboratory sessions, percentages, and university compliance status.</p>
+    </div>
+  </section>
+
+  <main class="dept-content">
+    <div class="container">
+
+      <div class="demo-bar" id="studentStatusBanner">
+        <span>Showing attendance records for: <b id="currentStudentLabel">Rahul Kumar (GI001 - ECE)</b></span>
+        <div style="display:flex;gap:10px">
+          <select id="quickStudentSwitch" style="padding:4px 8px;border-radius:4px;border:1px solid #d4b568;font-size:12.5px">
+            <option value="GI001">Rahul Kumar (GI001 - ECE · 87%)</option>
+            <option value="GI002">Priya Reddy (GI002 - CSE · 92%)</option>
+            <option value="GI003">Arjun Kumar (GI003 - EEE · 81%)</option>
+            <option value="GI004">Sneha Reddy (GI004 - CSE · 95%)</option>
+            <option value="GI005">Kiran Kumar (GI005 - ME · 78%)</option>
+          </select>
+          <a href="student-portal.html" class="btn primary" style="min-height:30px;padding:4px 12px;font-size:12px">Full Portal Dashboard →</a>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <small>OVERALL ATTENDANCE</small>
+          <strong id="displayAttPercent">87%</strong>
+          <span class="status-pill safe" id="displayAttPill">Above 75% Threshold</span>
+        </div>
+        <div class="metric-card">
+          <small>TOTAL LECTURES CONDUCTED</small>
+          <strong id="displayTotalClasses">200</strong>
+          <span>Across 5 Registered Courses</span>
+        </div>
+        <div class="metric-card">
+          <small>CLASSES ATTENDED</small>
+          <strong id="displayAttendedClasses" style="color:var(--teal)">174</strong>
+          <span>Present in Lectures & Labs</span>
+        </div>
+        <div class="metric-card">
+          <small>MINIMUM REQUIRED</small>
+          <strong>75%</strong>
+          <span>AICTE & University Mandate</span>
+        </div>
+      </div>
+
+      <!-- Attendance Table -->
+      <div class="portal-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+          <h2>Subject-Wise Attendance Details</h2>
+          <span style="font-size:12.5px;color:var(--muted)">Updated daily at 05:00 PM by Department Faculty</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Faculty Incharge</th>
+                <th>Classes Attended</th>
+                <th>Total Held</th>
+                <th>Percentage</th>
+                <th>Eligibility Status</th>
+              </tr>
+            </thead>
+            <tbody id="attPageTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- University Regulations Card -->
+      <div class="portal-card">
+        <h2>University Attendance Regulations & Condonation Rules</h2>
+        <ul style="padding-left:22px;color:var(--muted);font-size:14px;line-height:2">
+          <li><b>≥ 75% Attendance:</b> Eligible to appear for Semester End Examinations without condonation fee.</li>
+          <li><b>65% to 74% Attendance:</b> Eligible only on medical grounds or approved On-Duty (OD) upon payment of university condonation fee.</li>
+          <li><b>&lt; 65% Attendance:</b> Student is detained and will not be permitted to write Semester End Examinations.</li>
+        </ul>
+        <div style="margin-top:20px;display:flex;gap:12px">
+          <a class="btn primary" href="student-portal.html">Go to Student Portal Dashboard</a>
+          <a class="btn outline" style="color:var(--navy);border-color:var(--line);background:#fff" href="examinations.html">View Examination Rules</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <img class="brand-logo" src="assets/ganesha-logo.svg" alt="Ganesh logo">
+        <h3>Ganesh Institute of Technology</h3>
+        <p>Kurnool, Andhra Pradesh</p>
+        <p>Phone: 9963623910<br>Email: lsvsaravananganesh@gmail.com</p>
+      </div>
+      <div>
+        <h4>ACADEMIC LINKS</h4>
+        <a href="student-portal.html">Student Portal</a>
+        <a href="examinations.html">Examinations</a>
+        <a href="departments.html">Departments</a>
+        <a href="library.html">Digital Library</a>
+      </div>
+      <div>
+        <h4>INSTITUTE</h4>
+        <a href="profile.html">About Institute</a>
+        <a href="college-details.html">Campus Details</a>
+        <a href="news.html">News & Updates</a>
+        <a href="campus-map.html">Campus Map</a>
+      </div>
+      <div>
+        <h4>ADMINISTRATION</h4>
+        <a href="admin-portal.html">Admin Console</a>
+        <a href="placements.html">Placements Hub</a>
+        <a href="reviews.html">Community Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Ganesh Institute of Technology. All Rights Reserved.</span>
+        <span>Student Academic Information System</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="student-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const active = getStudentSession() || findStudent('GI001');
+      const switchSelect = document.getElementById('quickStudentSwitch');
+
+      function render(s) {
+        if (!s) return;
+        document.getElementById('currentStudentLabel').textContent = `${s.name} (${s.id} - ${s.department})`;
+        document.getElementById('displayAttPercent').textContent = s.attendance + '%';
+        const pill = document.getElementById('displayAttPill');
+        if (s.attendance >= 75) {
+          pill.className = 'status-pill safe';
+          pill.textContent = 'Eligible for Exams (≥75%)';
+        } else {
+          pill.className = 'status-pill danger';
+          pill.textContent = 'Shortage Warning (<75%)';
+        }
+
+        const details = s.attendanceDetails || [];
+        let totalHeld = 0;
+        let totalAtt = 0;
+        details.forEach(d => { totalHeld += d.total; totalAtt += d.attended; });
+        document.getElementById('displayTotalClasses').textContent = totalHeld || 200;
+        document.getElementById('displayAttendedClasses').textContent = totalAtt || 174;
+
+        const tbody = document.getElementById('attPageTbody');
+        tbody.innerHTML = details.map(d => `
+          <tr>
+            <td><b>${d.code}</b></td>
+            <td>${d.subject}</td>
+            <td>${d.faculty}</td>
+            <td>${d.attended}</td>
+            <td>${d.total}</td>
+            <td><b>${d.percent}%</b></td>
+            <td><span class="status-pill ${d.percent >= 75 ? 'safe' : 'danger'}">${d.percent >= 75 ? 'Eligible' : 'Shortage'}</span></td>
+          </tr>
+        `).join('');
+
+        if (switchSelect) switchSelect.value = s.id;
+      }
+
+      render(active);
+
+      if (switchSelect) {
+        switchSelect.addEventListener('change', () => {
+          const st = findStudent(switchSelect.value);
+          if (st) render(st);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

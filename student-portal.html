@@ -1,1 +1,341 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Student Portal | Ganesh Institute of Technology</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="student-portal.css"></head><body><header class="portal-header"><div class="brand"><div class="logo">GI<br>TECH</div><div><strong>Ganesh Institute of Technology</strong><small>Student Portal · Academic Services</small></div></div><a class="back" href="home.html">← College Website</a></header><section id="loginScreen" class="login-wrap"><div class="login-card"><h1>Student Login</h1><p>Sign in to access your academic dashboard and student services.</p><form id="loginForm"><div class="field"><label for="studentId">Student ID</label><input id="studentId" required placeholder="e.g. GI001"></div><div class="field"><label for="password">Password</label><input id="password" type="password" required placeholder="Demo password"></div><div id="error" class="error"></div><button class="login-btn">Login to Dashboard →</button></form><div class="demo-note"><b>Prototype mode</b><br>Demo IDs: GI001, GI002, GI003, GI004, GI005. Connect secure authentication before using real student data.</div></div></section><section id="dashboard" class="dashboard"><div class="dash-wrap"><div class="dash-top"><div><h1>Student Dashboard</h1><div class="welcome">Welcome back, <b id="studentName"></b></div></div><button class="logout" id="logout">Logout</button></div><div class="cards"><a class="card" href="attendance.html"><small>Attendance</small><strong id="attendance">—</strong><span>Current attendance</span></a><a class="card" href="examinations.html"><small>CGPA</small><strong id="cgpa">—</strong><span>Overall academic performance</span></a><a class="card" href="fees.html"><small>Fee Status</small><strong id="fee">—</strong><span>Current fee record</span></a><a class="card" href="departments.html"><small>Department</small><strong id="profileDept">—</strong><span>Academic department</span></a></div><div class="profile"><h2>Student Profile</h2><div class="profile-grid"><div><small>Student ID</small><b id="profileId">—</b></div><div><small>Name</small><b id="studentName2">Shown above</b></div><div><small>Department</small><b id="profileDept2">Shown above</b></div><div><small>Year</small><b id="profileYear">—</b></div><div><small>Section</small><b id="profileSection">—</b></div><div><small>Email</small><b id="profileEmail">—</b></div></div></div><div class="services"><h2>Student Services</h2><div class="service-grid"><a class="service" href="attendance.html"><span>📊</span><b>Attendance</b><span>Subject-wise attendance</span></a><a class="service" href="internal-marks.html"><span>📝</span><b>Internal Marks</b><span>View assessment marks</span></a><a class="service" href="examinations.html"><span>🎓</span><b>Results</b><span>Semester results</span></a><a class="service" href="timetable.html"><span>📅</span><b>Timetable</b><span>Class schedule</span></a><a class="service" href="fees.html"><span>💰</span><b>Fees</b><span>Fee details and status</span></a><a class="service" href="news.html"><span>📢</span><b>Notices</b><span>Student announcements</span></a><a class="service" href="placements.html"><span>💼</span><b>Placements</b><span>Drives and eligibility</span></a><a class="service" href="library.html"><span>📚</span><b>Library</b><span>Digital resources</span></a></div></div></div></section><script src="student-data.js"></script><script src="student-portal.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Portal | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="student-portal.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="portal-header">
+    <div class="brand">
+      <img class="portal-logo" src="assets/ganesha-logo.svg" alt="Ganesh Institute logo">
+      <div>
+        <strong>Ganesh Institute of Technology</strong>
+        <small>Student Academic Services & Self-Service Portal</small>
+      </div>
+    </div>
+    <div class="portal-nav-actions">
+      <a class="back-link" href="home.html">← Back to College Website</a>
+    </div>
+  </header>
+
+  <!-- Login Screen -->
+  <section id="loginScreen" class="login-wrap">
+    <div class="login-card">
+      <span class="login-tag">AUTHENTICATION GATEWAY</span>
+      <h1>Student Login</h1>
+      <p>Sign in to access your attendance, grades, timetables, and academic records.</p>
+
+      <div id="errorMsg" class="error-msg"></div>
+
+      <form id="studentLoginForm">
+        <div class="field">
+          <label for="demoQuickSelect">Quick Demo Login (Select Any Student):</label>
+          <select id="demoQuickSelect">
+            <option value="">-- Choose Demo Student Profile --</option>
+            <option value="GI001">Rahul Kumar (GI001 - ECE III-A · 87% Attnd · Paid)</option>
+            <option value="GI002">Priya Reddy (GI002 - CSE III-A · 92% Attnd · Paid)</option>
+            <option value="GI003">Arjun Kumar (GI003 - EEE III-B · 81% Attnd · Fee Due)</option>
+            <option value="GI004">Sneha Reddy (GI004 - CSE II-A · 95% Attnd · 9.1 CGPA)</option>
+            <option value="GI005">Kiran Kumar (GI005 - ME IV-B · 78% Attnd · Final Year)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="studentIdInput">Student ID / Roll No:</label>
+          <input type="text" id="studentIdInput" required placeholder="e.g. GI001 or GP001" autocomplete="username">
+        </div>
+
+        <div class="field">
+          <label for="studentPasswordInput">Password:</label>
+          <input type="password" id="studentPasswordInput" required placeholder="Any demo password" autocomplete="current-password" value="demo123">
+        </div>
+
+        <button type="submit" class="login-btn">Sign In to Dashboard →</button>
+      </form>
+
+      <div class="demo-note">
+        <b>💡 Demo Credentials & Instructions:</b><br>
+        • Valid Demo IDs: <b>GI001</b> to <b>GI005</b> (or <b>GP001</b> to <b>GP005</b>).<br>
+        • Password: Enter any demo password (e.g. <code>demo123</code>).<br>
+        • Or simply pick a student from the dropdown above for instant 1-click access!
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Screen -->
+  <main id="dashboardScreen" class="dashboard-screen">
+    
+    <!-- Top Profile Banner -->
+    <div class="student-banner">
+      <div class="student-meta">
+        <div class="student-avatar" id="dashAvatar">RK</div>
+        <div class="student-info">
+          <h1 id="dashName">Rahul Kumar</h1>
+          <p id="dashSubInfo">Roll No: 22GI0401 &nbsp;|&nbsp; B.Tech ECE (Year III, Sem VI, Sec A)</p>
+          <p style="font-size:12px;color:#cbdbe4;margin-top:3px" id="dashEmail">rahul.kumar@college.edu &nbsp;|&nbsp; Mentor: Dr. S. K. Sharma</p>
+        </div>
+      </div>
+      <div class="student-actions">
+        <button class="logout-btn" id="studentLogoutBtn">Logout</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="portal-tabs" aria-label="Portal tabs">
+      <button class="tab-btn active" data-tab="tab-overview">📊 Academic Overview</button>
+      <button class="tab-btn" data-tab="tab-attendance">📅 Subject Attendance</button>
+      <button class="tab-btn" data-tab="tab-marks">📝 Internal Marks & Results</button>
+      <button class="tab-btn" data-tab="tab-timetable">⏱️ Class Timetable</button>
+      <button class="tab-btn" data-tab="tab-fees">💰 Fee Records & Receipts</button>
+      <button class="tab-btn" data-tab="tab-ticket">🎫 Digital Hall Ticket</button>
+    </nav>
+
+    <!-- Tab 1: Overview -->
+    <section id="tab-overview" class="tab-panel active">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <small>CURRENT ATTENDANCE</small>
+          <strong id="cardAttendance">87%</strong>
+          <span id="cardAttendanceStatus" class="status-pill safe">Status: Satisfactory (≥75%)</span>
+        </div>
+        <div class="metric-card">
+          <small>CUMULATIVE CGPA</small>
+          <strong id="cardCgpa">8.2</strong>
+          <span>First Class with Distinction</span>
+        </div>
+        <div class="metric-card">
+          <small>FEE STATUS</small>
+          <strong id="cardFee">Paid</strong>
+          <span id="cardFeeSub">No outstanding dues</span>
+        </div>
+        <div class="metric-card">
+          <small>REGISTERED CREDITS</small>
+          <strong>21.0</strong>
+          <span>Semester VI (5 Theory + 2 Labs)</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:20px" class="two-col-wrap">
+        <div class="portal-card">
+          <h2>Academic Profile Details</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13.5px">
+            <div><small style="color:var(--muted)">Full Name:</small><br><b id="pName">—</b></div>
+            <div><small style="color:var(--muted)">Student ID:</small><br><b id="pId">—</b></div>
+            <div><small style="color:var(--muted)">Department:</small><br><b id="pDept">—</b></div>
+            <div><small style="color:var(--muted)">Year / Semester:</small><br><b id="pYearSem">—</b></div>
+            <div><small style="color:var(--muted)">Section:</small><br><b id="pSection">—</b></div>
+            <div><small style="color:var(--muted)">Institutional Email:</small><br><b id="pEmail">—</b></div>
+            <div><small style="color:var(--muted)">Phone Number:</small><br><b id="pPhone">—</b></div>
+            <div><small style="color:var(--muted)">Faculty Advisor / Mentor:</small><br><b id="pMentor">—</b></div>
+          </div>
+        </div>
+
+        <div class="portal-card">
+          <h2>Important Alerts for You</h2>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+            <div style="padding:10px;background:var(--soft);border-radius:6px;border-left:3px solid var(--teal)">
+              <b>Examination Form:</b> Hall tickets available in the Hall Ticket tab.
+            </div>
+            <div style="padding:10px;background:var(--soft);border-radius:6px;border-left:3px solid var(--gold)">
+              <b>Placement Drive:</b> TCS & Infosys registration open until next Friday.
+            </div>
+            <div style="padding:10px;background:var(--soft);border-radius:6px;border-left:3px solid var(--success)">
+              <b>Library:</b> 3 Digital e-books checked out; renewal due in 14 days.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Attendance -->
+    <section id="tab-attendance" class="tab-panel">
+      <div class="portal-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+          <h2>Subject-Wise Attendance Breakdown</h2>
+          <span class="status-pill safe">Minimum Required Attendance: 75%</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table" id="attendanceTable">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Course Name</th>
+                <th>Course Instructor</th>
+                <th>Attended</th>
+                <th>Total Held</th>
+                <th>Attendance %</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="attendanceTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="portal-card">
+        <h2>Submit Leave / On-Duty (OD) Request</h2>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px">Medical leave or technical event participation requests will be routed to your department HOD for attendance compensation.</p>
+        <form id="leaveReqForm" onsubmit="event.preventDefault(); alert('Leave request submitted successfully to your HOD!'); this.reset();">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div class="field">
+              <label>Reason Type:</label>
+              <select required>
+                <option value="medical">Medical Leave</option>
+                <option value="od">On-Duty (Hackathon / Conference / Sports)</option>
+                <option value="personal">Personal / Family Emergency</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Date Range:</label>
+              <input type="text" placeholder="e.g. Nov 14 - Nov 16" required>
+            </div>
+          </div>
+          <button type="submit" class="btn primary" style="min-height:38px;padding:8px 18px">Submit Request to Mentor</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tab 3: Internal Marks -->
+    <section id="tab-marks" class="tab-panel">
+      <div class="portal-card">
+        <h2>Continuous Internal Evaluation (CIE) Marks</h2>
+        <div style="overflow-x:auto">
+          <table class="data-table" id="marksTable">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Course Title</th>
+                <th>Mid Exam 1 (30)</th>
+                <th>Mid Exam 2 (30)</th>
+                <th>Assignments / Quiz (10)</th>
+                <th>Total CIE Marks</th>
+                <th>Performance Grade</th>
+              </tr>
+            </thead>
+            <tbody id="marksTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 4: Timetable -->
+    <section id="tab-timetable" class="tab-panel">
+      <div class="portal-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+          <h2>Weekly Class Timetable</h2>
+          <span style="font-size:12.5px;color:var(--muted)">Classroom: Tech Block 204 &nbsp;|&nbsp; Regular Timings: 09:00 AM - 04:30 PM</span>
+        </div>
+        <div class="timetable-wrap">
+          <table class="timetable-table">
+            <thead>
+              <tr>
+                <th>Time Slot</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+              </tr>
+            </thead>
+            <tbody id="timetableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 5: Fees -->
+    <section id="tab-fees" class="tab-panel">
+      <div class="portal-card">
+        <h2>Fee Summary & Financial Account</h2>
+        <div class="metrics-grid" style="margin-top:16px">
+          <div class="metric-card">
+            <small>TOTAL ANNUAL FEES</small>
+            <strong id="feeTotal">₹65,000</strong>
+            <span>Academic Year 2026-27</span>
+          </div>
+          <div class="metric-card">
+            <small>AMOUNT PAID</small>
+            <strong id="feePaid" style="color:var(--success)">₹65,000</strong>
+            <span class="status-pill safe">Received</span>
+          </div>
+          <div class="metric-card">
+            <small>OUTSTANDING DUES</small>
+            <strong id="feeDue" style="color:var(--navy)">₹0</strong>
+            <span id="feeDueBadge" class="status-pill safe">No Dues</span>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <button id="payFeeBtn" class="btn primary" style="display:none">💳 Pay Outstanding Balance Online</button>
+          <button id="printReceiptBtn" class="btn outline" style="color:var(--navy);border-color:var(--line);background:#fff">🧾 Print Official Fee Receipt</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 6: Digital Hall Ticket -->
+    <section id="tab-ticket" class="tab-panel">
+      <div class="portal-card">
+        <div style="text-align:right;margin-bottom:16px" class="no-print">
+          <button onclick="window.print()" class="btn primary">🖨️ Download / Print Hall Ticket</button>
+        </div>
+
+        <div class="hall-ticket">
+          <div class="ticket-header">
+            <img src="assets/ganesha-logo.svg" style="width:55px;height:55px;margin:0 auto 8px" alt="College logo">
+            <h2>GANESH INSTITUTE OF TECHNOLOGY</h2>
+            <p>Affiliated & Autonomous Institute · Kurnool, Andhra Pradesh</p>
+            <p style="font-weight:700;color:var(--navy);margin-top:4px">B.TECH EVEN SEMESTER END EXAMINATIONS - HALL TICKET</p>
+          </div>
+
+          <div class="ticket-grid">
+            <div><small>Student Name:</small><b id="htName">Rahul Kumar</b></div>
+            <div><small>Hall Ticket / Roll No:</small><b id="htRoll">22GI0401</b></div>
+            <div><small>Branch & Semester:</small><b id="htBranch">B.Tech ECE - Semester VI</b></div>
+            <div><small>Examination Center:</small><b>Ganesh Institute of Technology Campus (Block A)</b></div>
+          </div>
+
+          <table class="data-table" style="font-size:12.5px;margin-bottom:20px">
+            <thead>
+              <tr><th>Date</th><th>Session</th><th>Course Code</th><th>Course Title</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>20-10-2026</td><td>09:30 AM - 12:30 PM</td><td>22EC601</td><td>VLSI Design & CMOS Microelectronics</td></tr>
+              <tr><td>22-10-2026</td><td>09:30 AM - 12:30 PM</td><td>22EC602</td><td>Embedded Systems & IoT</td></tr>
+              <tr><td>25-10-2026</td><td>09:30 AM - 12:30 PM</td><td>22EC603</td><td>Microwave Engineering & Radar Systems</td></tr>
+              <tr><td>28-10-2026</td><td>09:30 AM - 12:30 PM</td><td>22PE604</td><td>Professional Elective - II</td></tr>
+              <tr><td>30-10-2026</td><td>09:30 AM - 12:30 PM</td><td>22OE605</td><td>Open Elective - II</td></tr>
+            </tbody>
+          </table>
+
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:35px;font-size:12px;color:var(--navy)">
+            <div>
+              <p><b>Candidate Signature:</b> ____________________</p>
+            </div>
+            <div style="text-align:right">
+              <p><b>Controller of Examinations</b></p>
+              <p>Ganesh Institute of Technology</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="student-data.js"></script>
+  <script src="student-portal.js"></script>
+</body>
+</html>

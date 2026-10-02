@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Management Portal | Ganesh Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="student-portal.css">
+  <style>
+    .admin-badge { background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+    .action-icon-btn { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 5px 9px; cursor: pointer; font-size: 12px; transition: all 0.2s; }
+    .action-icon-btn:hover { background: var(--soft); border-color: var(--teal); }
+    .action-icon-btn.danger:hover { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(7,27,43,0.6); display: none; place-items: center; z-index: 999; padding: 20px; }
+    .modal-overlay.active { display: grid; }
+    .modal-box { background: #fff; width: min(550px, 100%); border-radius: 14px; padding: 28px; box-shadow: var(--shadow); max-height: 90vh; overflow-y: auto; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .modal-header h3 { font-family: Georgia, serif; color: var(--navy); }
+    .modal-close { background: none; border: none; font-size: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="portal-header">
+    <div class="brand">
+      <img class="portal-logo" src="assets/ganesha-logo.svg" alt="College logo">
+      <div>
+        <strong>Ganesh Institute of Technology</strong>
+        <small>Campus Administration & Institutional Data Portal</small>
+      </div>
+    </div>
+    <div class="portal-nav-actions">
+      <span class="admin-badge">Admin System</span>
+      <a class="back-link" href="home.html">← Public Website</a>
+    </div>
+  </header>
+
+  <!-- Login Screen -->
+  <section id="adminLoginScreen" class="login-wrap">
+    <div class="login-card">
+      <span class="login-tag">ADMINISTRATIVE ACCESS</span>
+      <h1>Admin Login</h1>
+      <p>Secure administrative access to student records, announcements, and portal settings.</p>
+
+      <div id="adminErrorMsg" class="error-msg"></div>
+
+      <form id="adminLoginForm">
+        <div class="field">
+          <label for="adminUsername">Administrator Username:</label>
+          <input type="text" id="adminUsername" required placeholder="e.g. admin" value="admin">
+        </div>
+        <div class="field">
+          <label for="adminPassword">Password:</label>
+          <input type="password" id="adminPassword" required placeholder="admin password" value="admin123">
+        </div>
+        <button type="submit" class="login-btn">Authenticate & Enter Console →</button>
+      </form>
+
+      <div class="demo-note">
+        <b>🔑 Default Admin Credentials:</b><br>
+        • Username: <code>admin</code><br>
+        • Password: <code>admin123</code><br>
+        Provides full management over students, announcements, events, and moderation.
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Dashboard -->
+  <main id="adminDashboardScreen" class="dashboard-screen">
+    
+    <div class="student-banner" style="background:linear-gradient(120deg, #1f2937, #111827 70%, #374151)">
+      <div class="student-meta">
+        <div class="student-avatar" style="background:#fee2e2;color:#991b1b;border-color:#f87171">AD</div>
+        <div class="student-info">
+          <h1>Campus Administration Console</h1>
+          <p>Institutional Management · Academic Year 2026-27</p>
+          <p style="font-size:12px;color:#9ca3af;margin-top:3px">Authorized Role: Super Administrator & Registrar</p>
+        </div>
+      </div>
+      <div class="student-actions">
+        <button class="logout-btn" id="adminLogoutBtn">Logout Console</button>
+      </div>
+    </div>
+
+    <!-- Admin Tabs -->
+    <nav class="portal-tabs" aria-label="Admin tabs">
+      <button class="tab-btn active" data-tab="tab-admin-overview">📈 KPI Overview</button>
+      <button class="tab-btn" data-tab="tab-admin-students">👨‍🎓 Student Management (CRUD)</button>
+      <button class="tab-btn" data-tab="tab-admin-notices">📢 Circulars & Notices</button>
+      <button class="tab-btn" data-tab="tab-admin-events">📅 Events Manager</button>
+      <button class="tab-btn" data-tab="tab-admin-reviews">⭐ Review Moderation</button>
+      <button class="tab-btn" data-tab="tab-admin-backup">💾 Data Export & Reset</button>
+    </nav>
+
+    <!-- Tab 1: KPI Overview -->
+    <section id="tab-admin-overview" class="tab-panel active">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <small>TOTAL REGISTERED STUDENTS</small>
+          <strong id="kpiTotalStudents">5</strong>
+          <span>Undergraduate B.Tech</span>
+        </div>
+        <div class="metric-card">
+          <small>AVERAGE ATTENDANCE</small>
+          <strong id="kpiAvgAttendance">86.6%</strong>
+          <span class="status-pill safe">Campus Baseline ≥75%</span>
+        </div>
+        <div class="metric-card">
+          <small>PLACEMENTS OUTCOME</small>
+          <strong>86.4%</strong>
+          <span>Highest ₹8.4 LPA · Avg ₹4.8 LPA</span>
+        </div>
+        <div class="metric-card">
+          <small>ACTIVE NOTICE BULLETINS</small>
+          <strong id="kpiNoticesCount">6</strong>
+          <span>Live on Portal & Ticker</span>
+        </div>
+      </div>
+
+      <div class="portal-card">
+        <h2>Department Performance Summary</h2>
+        <table class="data-table">
+          <thead>
+            <tr><th>Department</th><th>Program</th><th>Faculty</th><th>Students Sample</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Computer Science & Engineering</b></td><td>B.Tech (CSE)</td><td>24</td><td>Priya Reddy, Sneha Reddy</td><td><span class="status-pill safe">Active</span></td></tr>
+            <tr><td><b>Electronics & Communication</b></td><td>B.Tech (ECE)</td><td>18</td><td>Rahul Kumar</td><td><span class="status-pill safe">Active</span></td></tr>
+            <tr><td><b>Electrical & Electronics</b></td><td>B.Tech (EEE)</td><td>15</td><td>Arjun Kumar</td><td><span class="status-pill safe">Active</span></td></tr>
+            <tr><td><b>Mechanical Engineering</b></td><td>B.Tech (ME)</td><td>16</td><td>Kiran Kumar</td><td><span class="status-pill safe">Active</span></td></tr>
+            <tr><td><b>Artificial Intelligence & DS</b></td><td>B.Tech (AI-DS)</td><td>14</td><td>New Batch Enrolled</td><td><span class="status-pill safe">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 2: Student Management -->
+    <section id="tab-admin-students" class="tab-panel">
+      <div class="portal-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:12px">
+          <h2>Student Records Directory</h2>
+          <button id="addStudentBtn" class="btn primary" style="min-height:38px;padding:8px 16px">+ Enroll New Student</button>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+          <input type="text" id="studentSearchFilter" placeholder="Search by name, ID, or department..." style="flex:1;min-width:240px;padding:9px 14px;border:1px solid var(--line);border-radius:6px">
+          <select id="studentDeptFilter" style="padding:9px 14px;border:1px solid var(--line);border-radius:6px">
+            <option value="">All Departments</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="ME">ME</option>
+            <option value="Civil">Civil</option>
+          </select>
+        </div>
+
+        <div style="overflow-x:auto">
+          <table class="data-table" id="adminStudentTable">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Full Name</th>
+                <th>Branch</th>
+                <th>Year / Sec</th>
+                <th>Attendance</th>
+                <th>CGPA</th>
+                <th>Fee Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminStudentTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Notices & News -->
+    <section id="tab-admin-notices" class="tab-panel">
+      <div class="portal-card">
+        <h2>Publish New Campus Circular / Notice</h2>
+        <form id="newNoticeForm" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+          <div class="field" style="grid-column: span 2">
+            <label>Notice Headline / Title:</label>
+            <input type="text" id="noticeTitleInput" required placeholder="e.g. Schedule for Mid-Term Assessment Lab Viva">
+          </div>
+          <div class="field">
+            <label>Category:</label>
+            <select id="noticeCategoryInput" required>
+              <option value="Academic">Academic Notice</option>
+              <option value="Examinations">Examinations Notice</option>
+              <option value="Placements">Training & Placements</option>
+              <option value="Events">Campus Events</option>
+              <option value="Admissions">Admissions</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Priority Tag:</label>
+            <select id="noticeBadgeInput" required>
+              <option value="High Priority">High Priority (Red Tag)</option>
+              <option value="Notice">General Notice (Blue Tag)</option>
+              <option value="Placement">Placement Alert (Green Tag)</option>
+              <option value="Event">Event Tag (Yellow Tag)</option>
+            </select>
+          </div>
+          <div style="grid-column: span 2">
+            <button type="submit" class="btn primary" style="min-height:38px;padding:8px 20px">📢 Publish Notice Live</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="portal-card">
+        <h2>Current Published Bulletins</h2>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr><th>Headline</th><th>Category</th><th>Badge</th><th>Date</th><th>Action</th></tr>
+            </thead>
+            <tbody id="adminNoticesTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 4: Events Manager -->
+    <section id="tab-admin-events" class="tab-panel">
+      <div class="portal-card">
+        <h2>Schedule Campus Event</h2>
+        <form id="newEventForm" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+          <div class="field" style="grid-column: span 2">
+            <label>Event Title:</label>
+            <input type="text" id="eventTitleInput" required placeholder="e.g. National Robotics Symposium 2026">
+          </div>
+          <div class="field">
+            <label>Category:</label>
+            <select id="eventCatInput">
+              <option value="Technical">Technical</option>
+              <option value="Workshops">Workshops</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Sports">Sports</option>
+              <option value="Innovation">Innovation & Startups</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Date & Time:</label>
+            <input type="text" id="eventDateInput" required placeholder="e.g. Dec 10, 2026 · 10:00 AM">
+          </div>
+          <div class="field">
+            <label>Venue:</label>
+            <input type="text" id="eventVenueInput" required placeholder="e.g. Main Auditorium">
+          </div>
+          <div class="field">
+            <label>Organizing Department / Club:</label>
+            <input type="text" id="eventOrgInput" required placeholder="e.g. ECE Dept & CoderClub">
+          </div>
+          <div style="grid-column: span 2">
+            <button type="submit" class="btn primary" style="min-height:38px;padding:8px 20px">+ Add Event to Calendar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="portal-card">
+        <h2>Active Scheduled Events</h2>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr><th>Event Title</th><th>Category</th><th>Date</th><th>Venue</th><th>Attendees</th><th>Action</th></tr>
+            </thead>
+            <tbody id="adminEventsTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 5: Review Moderation -->
+    <section id="tab-admin-reviews" class="tab-panel">
+      <div class="portal-card">
+        <h2>Student & Alumni Reviews Moderation</h2>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Approve incoming reviews to feature them on the public reviews page.</p>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr><th>Reviewer</th><th>Role</th><th>Rating</th><th>Category</th><th>Comment</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="adminReviewsTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 6: Backup & Reset -->
+    <section id="tab-admin-backup" class="tab-panel">
+      <div class="portal-card">
+        <h2>Data Management & Factory Defaults</h2>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px">Export live portal data as JSON for reporting, or reset stored data back to default demo state.</p>
+        
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <button id="exportJsonBtn" class="btn primary">📥 Export All Students (JSON)</button>
+          <button id="resetDataBtn" class="btn danger">⚠️ Reset All Data to Demo Factory State</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Add/Edit Student Modal Dialog -->
+  <div id="studentModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalStudentTitle">Enroll New Student</h3>
+        <button class="modal-close" id="closeStudentModal">✕</button>
+      </div>
+      <form id="studentModalForm">
+        <input type="hidden" id="editOriginalId">
+        <div class="field">
+          <label>Student ID (e.g. GI006):</label>
+          <input type="text" id="mStudentId" required>
+        </div>
+        <div class="field">
+          <label>Full Name:</label>
+          <input type="text" id="mStudentName" required>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field">
+            <label>Department:</label>
+            <select id="mStudentDept" required>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="ME">ME</option>
+              <option value="Civil">Civil</option>
+              <option value="AI-DS">AI-DS</option>
+              <option value="AI-ML">AI-ML</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Year / Section:</label>
+            <input type="text" id="mStudentYearSec" placeholder="III - A" required>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field">
+            <label>Attendance (%):</label>
+            <input type="number" id="mStudentAttnd" min="0" max="100" required>
+          </div>
+          <div class="field">
+            <label>CGPA (out of 10):</label>
+            <input type="number" step="0.1" id="mStudentCgpa" min="0" max="10" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Fee Status:</label>
+          <select id="mStudentFee">
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Email Address:</label>
+          <input type="email" id="mStudentEmail" required>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button type="button" class="btn outline" style="color:var(--navy);border-color:var(--line)" id="cancelStudentModal">Cancel</button>
+          <button type="submit" class="btn primary">Save Student Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="student-data.js"></script>
+  <script src="admin-portal.js"></script>
+</body>
+</html>
