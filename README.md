@@ -156,13 +156,20 @@ collegewebsite/
    ```bash
    git clone https://github.com/lsvsaravananganesh-bit/collegewebsite.git
    ```
-2. Open `index.html` or `home.html` in any modern web browser (Chrome, Edge, Firefox, Safari).
-3. Alternatively, run a lightweight local static server:
+2. Start the local development server (zero dependencies required):
+   ```bash
+   npm run dev
+   # or
+   npm start
+   ```
+   *This automatically launches the server on `http://localhost:3000` and opens your default browser.*
+
+3. Alternatively, you can run using Python 3 or open directly:
    ```bash
    # Using Python 3:
    python -m http.server 8000
    ```
-   Then navigate to `http://localhost:8000/home.html`.
+   Or simply double-click `home.html` in your file explorer.
 
 ---
 
